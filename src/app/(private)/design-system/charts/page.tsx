@@ -66,7 +66,7 @@ export default function ChartsPage() {
 
       {/* Line Chart */}
       <div className="bg-box-light dark:bg-box-light rounded-xl p-4 shadow-md w-full">
-        <h2 className="text-lg font-medium text-box-light-text mb-4">Envios por Mês</h2>
+        <h2 className="text-lg font-medium text-box-light-text mb-4">Usage</h2>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={monthlyData}>
             <CartesianGrid stroke={gridStroke} strokeDasharray="3 3" />
@@ -85,7 +85,7 @@ export default function ChartsPage() {
       <div className="flex flex-col lg:flex-row gap-6 w-full">
         {/* Pie Chart */}
         <div className="bg-box-light dark:bg-box-light flex-1 rounded-xl p-4 shadow-md min-w-[280px]">
-          <h2 className="text-lg font-medium text-box-light-text mb-4">Distribuição por Plano</h2>
+          <h2 className="text-lg font-medium text-box-light-text mb-4">API Keys</h2>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
               <Pie data={pieData} dataKey="value" nameKey="name" outerRadius={90} label>
@@ -100,9 +100,7 @@ export default function ChartsPage() {
 
         {/* Horizontal Bar Chart */}
         <div className="bg-box-light dark:bg-box-light flex-[2] rounded-xl p-4 shadow-md">
-          <h2 className="text-lg font-medium text-box-light-text mb-4">
-            Top 10 Endpoints mais acessados
-          </h2>
+          <h2 className="text-lg font-medium text-box-light-text mb-4">Top 10 Endpoints</h2>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart
               data={barData}

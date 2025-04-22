@@ -66,7 +66,7 @@ export default function ApiUsagePage() {
       </div>
 
       <div className="bg-box-light dark:bg-box-light p-4 rounded-xl shadow-md border border-box-light w-full">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex w-full md:w-100 border border-input-border items-center gap-3 mb-4 bg-input-background p-2 rounded-lg">
           <RiSearchLine className="w-5 h-5 text-theme-gray-300" />
           <input
             placeholder="Search endpoints..."
@@ -83,7 +83,7 @@ export default function ApiUsagePage() {
                 <th className="p-2 font-semibold">Status</th>
                 <th className="p-2 font-semibold">Avg Time</th>
                 <th className="p-2 font-semibold">Hits</th>
-                <th className="p-2 font-semibold">Cost (credits)</th>
+                <th className="p-2 font-semibold">Cost</th>
               </tr>
             </thead>
             <tbody>
@@ -118,7 +118,12 @@ export default function ApiUsagePage() {
                   </td>
                   <td className="p-2 text-theme-gray-400">{item.time}</td>
                   <td className="p-2">{item.hits}</td>
-                  <td className="p-2">{item.credits}</td>
+                  <td className="p-2">
+                    {new Intl.NumberFormat('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    }).format(item.credits)}
+                  </td>
                 </tr>
               ))}
             </tbody>

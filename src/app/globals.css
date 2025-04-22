@@ -15,6 +15,8 @@
   --box-normal: #d8dadf;
   --box-dark: #525866;
   --box-dark-text: #ffffff;
+  --input-background: #f7f8f8;
+  --input-border: #d8dadf;
 }
 
 /* Dark theme */
@@ -26,6 +28,8 @@
   --box-normal: #383a42;
   --box-dark: #1e1e1e;
   --box-dark-text: #ffffff;
+  --input-background: #383a42;
+  --input-border: #3f434d;
 }
 
 @theme inline {
@@ -44,6 +48,8 @@
   --color-box-normal: var(--box-normal);
   --color-box-dark: var(--box-dark);
   --color-box-dark-text: var(--box-dark-text);
+  --color-input-background: var(--input-background);
+  --color-input-border: var(--input-border);
   --color-theme-gray-0: #ffffff;
   --color-theme-gray-25: #f7f8f8;
   --color-theme-gray-50: #edeef1;

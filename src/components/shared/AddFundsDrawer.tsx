@@ -45,7 +45,7 @@ export function AddFundsDrawer({ method, open, onClose }: FundDrawerProps) {
         <Drawer.Content className="fixed bottom-0 md:right-0 md:top-0 md:w-[400px] w-full max-h-[90%] md:max-h-full md:h-[100dvh] bg-box-light dark:bg-box-dark border-t-2 md:border-l-2 md:border-t-0 border-theme-brand-primary-normal z-50 rounded-t-2xl md:rounded-l-2xl md:rounded-t-none shadow-xl shadow-theme-brand-primary-normal p-6 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center justify-between mb-2">
             <Drawer.Title className="text-xl font-semibold text-box-light-text">
-              Adicionar Créditos via {methodLabels[method]}
+              Add Funds via {methodLabels[method]}
             </Drawer.Title>
             <Drawer.Close asChild>
               <button className="text-box-light-text hover:opacity-80">
@@ -86,10 +86,10 @@ export function AddFundsDrawer({ method, open, onClose }: FundDrawerProps) {
             disabled={!amount || amount < 1}
           >
             {method === 'pix'
-              ? 'Pagar via PIX'
+              ? 'Pay via PIX'
               : method === 'stripe'
-                ? 'Finalizar com Stripe'
-                : 'Gerar cobrança em Crypto'}
+                ? 'Finish with Stripe'
+                : 'Finish with Crypto'}
           </Button>
         </Drawer.Content>
       </Drawer.Portal>

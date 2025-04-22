@@ -14,7 +14,7 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     Cookies.set('theme_preference', newTheme) // Store in cookie
-    document.documentElement.setAttribute('data-theme', theme)
+    document.documentElement.setAttribute('data-theme', newTheme)
     dispatch(setTheme(newTheme)) // Dispatch to Redux store
   }
 

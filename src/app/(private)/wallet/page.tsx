@@ -43,10 +43,10 @@ export default function WalletPage() {
       {' '}
       <section className="bg-box-light dark:bg-box-dark rounded-2xl p-6 shadow-lg">
         {' '}
-        <h1 className="text-2xl font-bold mb-4">Minha Carteira</h1>
+        <h1 className="text-2xl font-bold mb-4">My Wallet</h1>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <p className="text-sm uppercase font-medium text-theme-gray-400 mb-1">Saldo Atual</p>
+            <p className="text-sm uppercase font-medium text-theme-gray-400 mb-1">Balance</p>
             <p className="text-4xl font-bold text-theme-brand-primary-normal">R$ 2.500,00</p>
           </div>
 
@@ -83,7 +83,7 @@ export default function WalletPage() {
         </div>
       </section>
       <section className="bg-box-light dark:bg-box-dark rounded-2xl p-6 shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Últimas Transações</h2>
+        <h2 className="text-xl font-semibold mb-4">Last Transactions</h2>
 
         <ul className="flex flex-col gap-4">
           {transactions.map((tx, index) => (

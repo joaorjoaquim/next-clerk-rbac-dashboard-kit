@@ -53,13 +53,13 @@ export default function MyApiKeysPage() {
 
       <section className="bg-box-light dark:bg-box-light text-box-light-text rounded-xl border border-box-normal p-4 shadow-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2 bg-theme-gray-100 dark:bg-theme-gray-800 px-3 py-2 rounded-md w-full md:max-w-sm">
-            <RiSearchLine className="text-theme-gray-400" />
+          <div className="flex w-full md:w-100 border border-input-border items-center gap-3 mb-4 bg-input-background p-2 rounded-lg">
+            <RiSearchLine className="w-5 h-5 text-theme-gray-300" />
             <input
-              className="bg-transparent outline-none text-sm w-full"
               placeholder="Pesquisar por APIs"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              className="bg-transparent w-full text-sm focus:outline-none text-[var(--foreground)] placeholder:text-theme-gray-400"
             />
           </div>
           <Button variant="primary" icon="RiAddLine" iconPosition="start">
