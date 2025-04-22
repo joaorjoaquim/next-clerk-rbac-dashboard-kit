@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #edeef1;
+  --foreground: #020202;
+  --font-inter: "Inter", sans-serif;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --background: #edeef1;
+  --foreground: #25262c;
+  --box-light: #ffffff;
+  --box-light-text: #1a1a1a;
+  --box-normal: #d8dadf;
+  --box-dark: #525866;
+  --box-dark-text: #ffffff;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background: #020202;
+  --foreground: #edeef1;
+  --box-light: #25262c;
+  --box-light-text: #f4f4f4;
+  --box-normal: #383a42;
+  --box-dark: #1e1e1e;
+  --box-dark-text: #ffffff;
+}
+
+@theme inline {
+  --color-theme-brand-primary-lighter: #f3faf9;
+  --color-theme-brand-primary-light: #b0dfdc;
+  --color-theme-brand-primary-normal: #3d8e8f;
+  --color-theme-brand-primary-dark: #24494b;
+  --color-theme-brand-primary-darker: #0f2124;
+  --color-theme-brand-secondary-lighter: #fbecca;
+  --color-theme-brand-secondary-light: #f4bf55;
+  --color-theme-brand-secondary-normal: #ea8516;
+  --color-theme-brand-secondary-dark: #8c3614;
+  --color-theme-brand-secondary-darker: #421506;
+  --color-box-light: var(--box-light);
+  --color-box-light-text: var(--box-light-text);
+  --color-box-normal: var(--box-normal);
+  --color-box-dark: var(--box-dark);
+  --color-box-dark-text: var(--box-dark-text);
+  --color-theme-gray-0: #ffffff;
+  --color-theme-gray-25: #f7f8f8;
+  --color-theme-gray-50: #edeef1;
+  --color-theme-gray-100: #d8dadf;
+  --color-theme-gray-200: #b5bac4;
+  --color-theme-gray-300: #8d94a3;
+  --color-theme-gray-400: #6f7788;
+  --color-theme-gray-500: #525866;
+  --color-theme-gray-600: #494f5b;
+  --color-theme-gray-700: #3f434d;
+  --color-theme-gray-800: #383a42;
+  --color-theme-gray-900: #25262c;
+  --color-theme-gray-950: #020202;
+  --color-theme-error-lighter: #fdedf0;
+  --color-theme-error-light: #f8c9d2;
+  --color-theme-error-normal: #df1c41;
+  --color-theme-error-dark: #af1d38;
+  --color-theme-error-darker: #710e21;
+  --color-theme-warning-lighter: #fef7ec;
+  --color-theme-warning-light: #fbdfb1;
+  --color-theme-warning-normal: #f2ae40;
+  --color-theme-warning-dark: #b47818;
+  --color-theme-warning-darker: #693d11;
+  --color-theme-success-lighter: #effaf6;
+  --color-theme-success-light: #cbf5e5;
+  --color-theme-success-normal: #38c793;
+  --color-theme-success-dark: #2d9f75;
+  --color-theme-success-darker: #176448;
+
+  --animate-theme-icon: fade-rotate 0.5s ease-in-out;
+
+  @keyframes fade-rotate {
+    0% {
+      opacity: 0;
+      transform: rotate(-180deg) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}
+
+@layer base {
+  button:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+}

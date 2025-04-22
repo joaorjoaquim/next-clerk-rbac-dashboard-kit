@@ -1,0 +1,43 @@
+import {
+  RiHomeLine,
+  RiWallet3Line,
+  RiKeyLine,
+  RiKey2Line,
+  RiBarChartLine,
+  RiLayoutGridLine,
+  RiToggleLine,
+  RiPieChartLine,
+  RiArrowRightLine,
+  RiArrowLeftLine,
+  RiArrowUpSLine,
+  RiArrowDownSLine,
+  RiCheckLine,
+  RiSettings3Line,
+  RiLogoutBoxLine,
+  RiMoonLine,
+  RiSunLine,
+  RiRestartLine,
+} from '@remixicon/react'
+
+export const iconMap = {
+  RiHomeLine,
+  RiWallet3Line,
+  RiKeyLine,
+  RiKey2Line,
+  RiBarChartLine,
+  RiLayoutGridLine,
+  RiToggleLine,
+  RiPieChartLine,
+  RiArrowRightLine,
+  RiArrowLeftLine,
+  RiArrowUpSLine,
+  RiArrowDownSLine,
+  RiCheckLine,
+  RiSettings3Line,
+  RiLogoutBoxLine,
+  RiMoonLine,
+  RiSunLine,
+  RiRestartLine,
+} as const
+
+export type IconName = keyof typeof iconMap

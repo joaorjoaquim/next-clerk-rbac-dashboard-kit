@@ -1,0 +1,58 @@
+'use client'
+import Header from '@/components/shared/Header'
+import { Sidebar } from '@/components/shared/sidebar/Siderbar'
+import { SiderbarMobile } from '@/components/shared/sidebar/SiderbarMobile'
+import PrivateLayout from '@/core/PrivateLayout'
+import { RootState } from '@/core/store'
+import { useSelector } from 'react-redux'
+import type { MenuItem } from '@/components/shared/sidebar/SidebarMenuRenderer'
+
+export default function DashboardRootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const theme = useSelector((state: RootState) => state.theme.theme)
+
+  const menu: MenuItem[] = [
+    { name: 'Home', link: '/', icon: 'RiHomeLine' },
+    { name: 'Wallet', link: '/wallet', icon: 'RiWallet3Line' },
+    {
+      name: 'API Keys',
+      icon: 'RiKey2Line',
+      submenu: [
+        { name: 'My Keys', link: '/api-keys/my-keys', icon: 'RiKeyLine' },
+        { name: 'Usage', link: '/api-keys/usage', icon: 'RiBarChartLine' },
+      ],
+    },
+    {
+      name: 'Design System',
+      icon: 'RiLayoutGridLine',
+      submenu: [
+        { name: 'Components', link: '/design-system/components', icon: 'RiToggleLine' },
+        { name: 'Charts', link: '/design-system/charts', icon: 'RiPieChartLine' },
+      ],
+    },
+  ]
+
+  return (
+    <main className="flex flex-col h-screen">
+      <PrivateLayout>
+        <SiderbarMobile menu={menu} />
+        <section
+          className={`flex flex-row w-full flex-1 border-t-2 border-theme-brand-primary-normal overflow-hidden`}
+        >
+          <Sidebar menu={menu} />
+
+          {/* Content section with scroll and proper height adjustment */}
+          <div className="flex flex-col w-full h-full">
+            <Header menu={menu} />
+
+            {/* Children (main content) */}
+            <div className="flex-1 overflow-y-auto ">{children}</div>
+          </div>
+        </section>
+      </PrivateLayout>
+    </main>
+  )
+}
