@@ -36,7 +36,7 @@ export default function DashboardRootLayout({
   ]
 
   return (
-    <main className="flex flex-col h-screen">
+    <main className="flex flex-col h-[100dvh]">
       <PrivateLayout>
         <SiderbarMobile menu={menu} />
         <section
@@ -45,11 +45,11 @@ export default function DashboardRootLayout({
           <Sidebar menu={menu} />
 
           {/* Content section with scroll and proper height adjustment */}
-          <div className="flex flex-col w-full h-full">
+          <div className="flex flex-col w-full flex-1 min-h-0">
             <Header menu={menu} />
 
             {/* Children (main content) */}
-            <div className="flex-1 overflow-y-auto ">{children}</div>
+            <div className="flex-1 px-3 pb-6 overflow-y-auto">{children}</div>
           </div>
         </section>
       </PrivateLayout>
