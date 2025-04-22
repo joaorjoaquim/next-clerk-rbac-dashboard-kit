@@ -32,7 +32,7 @@ export function Sidebar({ menu }: SidebarProps) {
       <div
         className={`hidden lg:flex flex-col bg-box-light dark:bg-box-light h-full font-poppins ${isOpen ? 'min-w-48' : 'min-w-16'} rounded-xl duration-500 text-box-light-text dark:text-box-light-text shadow-lg shadow-box-normal`}
       >
-        <div className="pt-5 pb-3 flex items-center justify-center transition-all border-b border-box-normal dark:border-box-dark">
+        <div className="pt-5 pb-3 flex items-center justify-center transition-all border-b border-input-background">
           {isOpen ? (
             <div className="flex flex-row w-full items-center justify-between pb-2 gap-1 px-3">
               <div className="flex flex-row gap-3 items-start max-w-28 overflow-hidden">
@@ -64,7 +64,7 @@ export function Sidebar({ menu }: SidebarProps) {
           ) : (
             <button
               type="button"
-              className="flex items-center justify-center p-[6px] rounded-lg bg-box-normal hover:cursor-pointer"
+              className="flex items-center justify-center p-[6px] rounded-lg bg-box-dark hover:cursor-pointer"
               onClick={handleToggleSidebar}
             >
               <svg
