@@ -15,8 +15,8 @@ export function SiderbarMobile({ menu }: SiderbarMobileProps) {
   const isOpen = useSelector((state: RootState) => state.sidebar.isMobileOpen)
   const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({})
   const dispatch = useDispatch()
-  const pathname = usePathname()
-  const router = useRouter()
+  const theme = useSelector((state: RootState) => state.theme.theme)
+  const logoSrc = theme === 'dark' ? '/logo.svg' : '/logo-dark.svg'
 
   function toggleSubmenu(itemName: string) {
     setOpenSubmenus((prev) => ({ ...prev, [itemName]: !prev[itemName] }))
@@ -31,9 +31,9 @@ export function SiderbarMobile({ menu }: SiderbarMobileProps) {
     <Dialog.Root open={isOpen} onOpenChange={(state) => dispatch(setMobileSidebar(state))}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/80 z-40" />
-        <Dialog.Content className="fixed top-0 left-0 h-screen w-[215px] z-50 bg-box-light dark:bg-box-dark shadow-xl p-4 flex flex-col font-poppins text-theme-gray-25 dark:text-theme-gray-0">
+        <Dialog.Content className="fixed top-0 left-0 h-screen w-[215px] z-50 bg-box-light shadow-xl p-4 flex flex-col font-poppins text-theme-gray-25 dark:text-theme-gray-0">
           <Dialog.Title className="flex justify-between items-center mb-6">
-            <img src="/logo.svg" alt="Logo" className="w-[110px] aspect-[3/1] object-contain" />
+            <img src={logoSrc} alt="Logo" className="w-[110px] aspect-[3/1] object-contain" />
             <Dialog.Close asChild>
               <button
                 onClick={handleCloseSidebar}
