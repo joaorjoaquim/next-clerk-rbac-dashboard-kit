@@ -51,7 +51,7 @@ export default function MyApiKeysPage() {
         <p className="text-sm text-theme-gray-400 mt-1">Gerencie suas APIs, chaves e acessos</p>
       </header>
 
-      <section className="bg-box-light dark:bg-box-light text-box-light-text rounded-xl border border-box-normal p-4 shadow-md">
+      <section className="bg-box-light text-box-light-text rounded-xl border border-box-normal p-4 shadow-md">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div className="flex w-full md:w-100 border border-input-border items-center gap-3 mb-4 bg-input-background p-2 rounded-lg">
             <RiSearchLine className="w-5 h-5 text-theme-gray-300" />
@@ -98,7 +98,7 @@ export default function MyApiKeysPage() {
               <div className="flex flex-col md:flex-row gap-3 items-center">
                 <div className="w-40">
                   <div className="text-xs mb-1">Uso: {api.usage}%</div>
-                  <div className="w-full h-2 rounded bg-theme-gray-200 dark:bg-theme-gray-700 overflow-hidden">
+                  <div className="w-full h-2 rounded bg-box-normal overflow-hidden">
                     <div
                       className="h-2 rounded bg-theme-brand-primary-normal transition-all duration-500"
                       style={{ width: `${api.usage}%` }}

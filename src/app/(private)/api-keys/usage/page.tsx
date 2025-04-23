@@ -65,7 +65,7 @@ export default function ApiUsagePage() {
         </Button>
       </div>
 
-      <div className="bg-box-light dark:bg-box-light p-4 rounded-xl shadow-md border border-box-light w-full">
+      <div className="bg-box-light p-4 rounded-xl shadow-md border border-box-light w-full">
         <div className="flex w-full md:w-100 border border-input-border items-center gap-3 mb-4 bg-input-background p-2 rounded-lg">
           <RiSearchLine className="w-5 h-5 text-theme-gray-300" />
           <input
@@ -77,7 +77,7 @@ export default function ApiUsagePage() {
         <div className="w-full overflow-x-auto">
           <table className="w-full text-left text-sm text-[var(--foreground)]">
             <thead>
-              <tr className="border-b border-box-normal dark:border-box-dark text-theme-gray-300">
+              <tr className="border-b border-box-normal text-theme-gray-300">
                 <th className="p-2 font-semibold">Endpoint</th>
                 <th className="p-2 font-semibold">Method</th>
                 <th className="p-2 font-semibold">Status</th>

@@ -39,7 +39,7 @@ export default function WalletPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8 w-full h-full px-4 py-6 text-box-light-text dark:text-box-light-text">
+    <div className="flex flex-col gap-8 w-full h-full px-4 py-6 text-box-light-text">
       <section className="bg-box-light rounded-2xl p-6 shadow-lg">
         <h1 className="text-2xl font-bold mb-4">My Wallet</h1>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">

@@ -7,7 +7,7 @@ import { withMask } from 'use-mask-input'
 
 export type InputVariant = 'default' | 'error'
 export type IconName = keyof typeof RemixIcons
-export type MaskType = 'cpf' | 'cnpj' | 'phone' | 'date' | 'hour'
+export type MaskType = 'cpf' | 'cnpj' | 'phone' | 'date' | 'hour' | 'currency'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -102,6 +102,8 @@ function getMaskPattern(mask?: MaskType) {
       return '99/99/9999'
     case 'hour':
       return '99:99'
+    case 'currency':
+      return 'brl-currency'
     default:
       return ''
   }
