@@ -40,9 +40,7 @@ export default function WalletPage() {
 
   return (
     <div className="flex flex-col gap-8 w-full h-full px-4 py-6 text-box-light-text dark:text-box-light-text">
-      {' '}
-      <section className="bg-box-light dark:bg-box-dark rounded-2xl p-6 shadow-lg">
-        {' '}
+      <section className="bg-box-light rounded-2xl p-6 shadow-lg">
         <h1 className="text-2xl font-bold mb-4">My Wallet</h1>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
@@ -82,14 +80,15 @@ export default function WalletPage() {
           </div>
         </div>
       </section>
-      <section className="bg-box-light dark:bg-box-dark rounded-2xl p-6 shadow-md">
+
+      <section className="bg-box-light rounded-2xl p-6 shadow-md">
         <h2 className="text-xl font-semibold mb-4">Last Transactions</h2>
 
         <ul className="flex flex-col gap-4">
           {transactions.map((tx, index) => (
             <li
               key={index}
-              className="flex justify-between items-center px-4 py-3 rounded-lg bg-box-normal dark:bg-theme-gray-800"
+              className="flex justify-between items-center px-4 py-3 rounded-lg bg-box-normal"
             >
               <div className="flex items-center gap-3">
                 <span

@@ -24,7 +24,7 @@ export default function Header({ menu }: SidebarProps) {
   const routeName = menu.find((item) => item.link === linkPath)
 
   return (
-    <header className="flex flex-row w-full min-h-[70px] py-2 px-4 items-center justify-between text-theme-gray-0">
+    <header className="flex flex-row w-full min-h-[70px] py-2 px-4 items-center justify-between text-box-light-text">
       <div className="flex items-center text-lg lg:text-2xl font-semibold gap-2 md:gap-4">
         <button
           type="button"
@@ -71,6 +71,18 @@ export default function Header({ menu }: SidebarProps) {
               align="end"
               className="min-w-[160px] bg-box-light border border-box-normal rounded-xl p-1 shadow-lg z-50"
             >
+              <DropdownMenu.Item
+                className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-box-normal cursor-pointer transition-all duration-300"
+                onClick={() => router.push('/settings')}
+              >
+                <div className="flex flex-col gap-2 items-start justify-start border-b border-box-light-text/50 pb-2">
+                  <span className="font-medium">Olá, {user.firstName}</span>
+                  <span className="font-light text-[12px] opacity-70">
+                    {user.primaryEmailAddress?.emailAddress}
+                  </span>
+                </div>
+              </DropdownMenu.Item>
+
               <DropdownMenu.Item
                 className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-box-normal cursor-pointer transition-all duration-300"
                 onClick={() => router.push('/settings')}

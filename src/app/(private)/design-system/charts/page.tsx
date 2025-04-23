@@ -1,22 +1,22 @@
 'use client'
 
+import { RootState } from '@/core/store'
+import { useSelector } from 'react-redux'
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
+  Bar,
+  BarChart,
   CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
   Cell,
   Legend,
-  BarChart,
-  Bar,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/core/store'
 
 const COLORS = {
   primary: 'var(--color-theme-brand-primary-normal)',
@@ -56,16 +56,15 @@ const barData = [
 export default function ChartsPage() {
   const theme = useSelector((state: RootState) => state.theme.theme)
   const isDark = theme === 'dark'
-  const bg = isDark ? '#1a1a1a' : '#ffffff'
   const gridStroke = isDark ? '#3f3f3f' : '#e0e0e0'
   const textColor = isDark ? '#e1e4e8' : '#1d1f23'
 
   return (
-    <div className="flex flex-col gap-10 p-4 sm:p-6 w-full">
+    <div className="flex flex-col gap-10 w-full">
       <h1 className="text-2xl font-semibold text-[var(--foreground)]">API Usage Analytics</h1>
 
       {/* Line Chart */}
-      <div className="bg-box-light dark:bg-box-light rounded-xl p-4 shadow-md w-full">
+      <div className="bg-box-light rounded-xl p-4 shadow-md w-full">
         <h2 className="text-lg font-medium text-box-light-text mb-4">Usage</h2>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={monthlyData}>
@@ -84,7 +83,7 @@ export default function ChartsPage() {
       {/* Pie + Bar Chart Responsive Container */}
       <div className="flex flex-col lg:flex-row gap-6 w-full">
         {/* Pie Chart */}
-        <div className="bg-box-light dark:bg-box-light flex-1 rounded-xl p-4 shadow-md min-w-[280px]">
+        <div className="bg-box-light flex-1 rounded-xl p-4 shadow-md min-w-[280px]">
           <h2 className="text-lg font-medium text-box-light-text mb-4">API Keys</h2>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
@@ -99,7 +98,7 @@ export default function ChartsPage() {
         </div>
 
         {/* Horizontal Bar Chart */}
-        <div className="bg-box-light dark:bg-box-light flex-[2] rounded-xl p-4 shadow-md">
+        <div className="bg-box-light flex-[2] rounded-xl p-4 shadow-md">
           <h2 className="text-lg font-medium text-box-light-text mb-4">Top 10 Endpoints</h2>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart

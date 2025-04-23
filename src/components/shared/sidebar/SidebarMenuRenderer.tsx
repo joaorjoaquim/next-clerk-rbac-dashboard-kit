@@ -70,7 +70,7 @@ export function SidebarMenuRenderer({
               className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-sm ${
                 isActive
                   ? 'bg-theme-brand-primary-normal text-white'
-                  : 'hover:bg-theme-brand-primary-normal text-box-light-text'
+                  : 'hover:bg-theme-brand-primary-normal text-box-light-text hover:text-white'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export function SidebarMenuRenderer({
                       className={`flex items-center gap-2 text-sm px-2 py-1 rounded-md ${
                         isSubActive
                           ? 'bg-theme-brand-primary-light text-theme-brand-primary-darker'
-                          : 'hover:bg-theme-brand-primary-normal text-box-light-text'
+                          : 'hover:bg-theme-brand-primary-normal text-box-light-text hover:text-white'
                       }`}
                     >
                       {SubIcon && <SubIcon size={16} />}

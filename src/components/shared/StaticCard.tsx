@@ -5,7 +5,7 @@ export function StaticCard({ className, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        'p-4 rounded-xl border border-zinc-800 bg-zinc-950 text-white shadow-sm',
+        'p-4 rounded-xl border border-box-normal bg-box-light text-box-light-text shadow-sm',
         className
       )}
       {...props}
