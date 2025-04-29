@@ -13,6 +13,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ReduxProvider store={store}>
       <ClerkProvider
         localization={ptBR}
+        afterSignInUrl="/"
+        afterSignUpUrl="/"
         appearance={{
           layout: {
             socialButtonsPlacement: 'bottom',

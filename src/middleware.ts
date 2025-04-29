@@ -1,55 +1,80 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
-import { NextResponse, type MiddlewareConfig, type NextRequest } from "next/server";
+import { clerkMiddleware } from '@clerk/nextjs/server'
+import { NextResponse, type MiddlewareConfig, type NextRequest } from 'next/server'
 
-const isPublicRoute = ["/sign-in", "/sign-up"];
-const REDIRECT_WHEN_NOT_AUTHENTICATED = "/sign-in";
-const REDIRECT_WHEN_AUTHENTICATED = "/";
+const isPublicRoute = ['/sign-in', '/sign-up', '/sso-callback']
+const REDIRECT_WHEN_NOT_AUTHENTICATED = '/sign-in'
+const REDIRECT_WHEN_AUTHENTICATED = '/'
 
 const isPublicAsset = (path: string) => {
-  return path.startsWith("/public") || /\.(png|jpg|jpeg|webp|svg|gif|ico|woff2?|ttf|css|js)$/.test(path);
-};
+  return (
+    path.startsWith('/public') ||
+    /\.(png|jpg|jpeg|webp|svg|gif|ico|woff2?|ttf|css|js)$/.test(path)
+  )
+}
+
+function parseAuthDataCookie(authDataRaw?: string) {
+  if (!authDataRaw) return null
+
+  try {
+    const parsed = JSON.parse(authDataRaw)
+    const { accessToken, userId, role, permissions, createdAt } = parsed
+
+    if (!accessToken || !userId || !role || !permissions || !createdAt) {
+      return null
+    }
+
+    const isExpired = Date.now() - createdAt > 7 * 24 * 60 * 60 * 1000
+    if (isExpired) {
+      return null
+    }
+
+    return { accessToken, userId, role, permissions }
+  } catch (error) {
+    console.error('Failed to parse authData cookie:', error)
+    return null
+  }
+}
+
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-  const path = req.nextUrl.pathname;
+  const path = req.nextUrl.pathname
   const session = await auth()
 
   if (isPublicAsset(path)) {
-    return NextResponse.next();
+    return NextResponse.next()
   }
 
-  // Allow public routes to load
+  const authDataRaw = req.cookies.get('authData')?.value
+  const validatedAuth = parseAuthDataCookie(authDataRaw)
+  // PUBLIC ROUTES:
   if (isPublicRoute.includes(path)) {
-    return NextResponse.next();
+    if (session?.userId && validatedAuth) {
+      // Session + Cookie exist => already authenticated => redirect home
+      const homeUrl = new URL(REDIRECT_WHEN_AUTHENTICATED, req.url)
+      return NextResponse.redirect(homeUrl)
+    }
+    return NextResponse.next()
   }
 
-  // Redirect unauthenticated users to sign-in
-  if (!session.userId) {
-    return NextResponse.redirect(new URL(REDIRECT_WHEN_NOT_AUTHENTICATED, req.url));
+  // PRIVATE ROUTES:
+  if (!session?.userId || !validatedAuth) {
+    const signInUrl = new URL(REDIRECT_WHEN_NOT_AUTHENTICATED, req.url)
+    return NextResponse.redirect(signInUrl)
   }
 
-  const authCookie = req.cookies.get("authData")?.value;
-  if (!authCookie) {
-    return NextResponse.redirect(new URL(REDIRECT_WHEN_NOT_AUTHENTICATED, req.url));
-  }
+  // OK (PRIVATE ROUTE + VALID SESSION)
+  const { userId, role, permissions } = validatedAuth
 
-  const { userId, role, permissions } = JSON.parse(decodeURIComponent(authCookie));
+  const response = NextResponse.next()
+  response.headers.set('x-user-id', userId)
+  response.headers.set('x-user-role', role)
+  response.headers.set('x-user-permissions', encodeURIComponent(JSON.stringify(permissions)))
 
-  // Redirect authenticated users to `/`
-  if (isPublicRoute.includes(path)) {
-    return NextResponse.redirect(new URL(REDIRECT_WHEN_AUTHENTICATED, req.url));
-  }
-
-  // Add headers for SSR access
-  const response = NextResponse.next();
-  response.headers.set("x-user-id", userId);
-  response.headers.set("x-user-role", role);
-  response.headers.set("x-user-permissions", encodeURIComponent(JSON.stringify(permissions)));
-
-
-  return NextResponse.next();
-});
+  return response
+})
 
 export const config: MiddlewareConfig = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|cap/.*|public/.*).*)'],
-
-};
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|cap/.*|public/.*).*)',
+  ],
+}

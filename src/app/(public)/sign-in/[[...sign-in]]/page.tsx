@@ -1,47 +1,38 @@
 'use client'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { useUser, SignIn } from '@clerk/nextjs'
-import Cookies from 'js-cookie'
-import { ThemeToggle } from '@/components/shared/ThemeToggle'
-import LoadingClient from '@/components/shared/loading/LoadingClient'
 
-export default function Page() {
-  const { user, isSignedIn } = useUser()
+import { AuthLayout } from '@/components/shared/auth/AuthLayout'
+import { SignInForm } from '@/components/shared/auth/SignInForm'
+import { setAuthState } from '@/core/reducers/authSlice'
+import { createAuthData, setAuthCookie } from '@/lib/utils/setAuthCookie'
+import { useSession, useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+export default function SignInPage() {
+  const { session } = useSession()
+  const { user } = useUser()
+  const dispatch = useDispatch()
   const router = useRouter()
 
   useEffect(() => {
-    if (isSignedIn && user) {
-      //   fetch(`${process.env.NEXT_PUBLIC_EXTERNAL_API_URL}/users/${user.id}/role`)
-      //     .then((res) => res.json())
-      //     .then(({ role, permissions }) => {
-      //       const authData = JSON.stringify({ userId: user.id, role, permissions });
+    if (session && user) {
+      const authData = createAuthData(session)
 
-      //       // Store in secure cookie
-      //       Cookies.set("authData", authData, { path: "/", secure: true, sameSite: "Strict" });
+      // 1. Set cookie
+      setAuthCookie(authData)
 
-      //       router.push("/"); // Redirect to home
-      //     });
-      const authData = JSON.stringify({
-        userId: user.id,
-        role: `user`,
-        permissions: {},
-      })
-      Cookies.set('authData', authData, {
-        path: '/',
-        secure: true,
-        sameSite: 'Strict',
-      })
-      router.push('/') // Redirect to home
+      // 2. Set redux
+      dispatch(setAuthState(authData))
+
+      // 3. Redirect
+
+      router.replace('/')
     }
-  }, [isSignedIn, user])
-
+  }, [session, user, dispatch, router])
   return (
-    <main className="flex w-[100dvw] h-[100dvh] items-center justify-center">
-      <div className="fixed top-2 right-2 ">
-        <ThemeToggle />
-      </div>
-      {!isSignedIn ? <SignIn /> : <LoadingClient />}
-    </main>
+    <AuthLayout>
+      <SignInForm />
+    </AuthLayout>
   )
 }

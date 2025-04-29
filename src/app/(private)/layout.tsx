@@ -40,8 +40,9 @@ export default function DashboardRootLayout({
       <PrivateLayout>
         <SiderbarMobile menu={menu} />
         <section
-          className={`flex flex-row w-full flex-1 border-t-2 border-theme-brand-primary-normal overflow-hidden`}
+          className={`relative flex flex-row w-full flex-1 border-t-2 border-theme-brand-primary-normal overflow-hidden`}
         >
+          <header className="absolute top-0 left-0 w-[100dvw] h-[70px] bg-theme-brand-primary-normal -z-1"></header>
           <Sidebar menu={menu} />
 
           {/* Content section with scroll and proper height adjustment */}

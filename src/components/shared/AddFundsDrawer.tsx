@@ -25,7 +25,6 @@ export function AddFundsDrawer({ method, open, onClose }: FundDrawerProps) {
 
   const handleAddAmount = (val: number) => {
     const cleanAmount = parseFloat(amount) || 0
-    console.log(amount, cleanAmount, val)
     const total = cleanAmount + val
     setAmount(total.toString())
   }

@@ -48,7 +48,6 @@ export default function Header({ menu }: SidebarProps) {
             />
           </svg>
         </button>
-        {routeName?.name}
       </div>
 
       <div className="flex flex-row w-fit gap-2 lg:gap-6 items-center">
