@@ -33,11 +33,11 @@
 }
 
 @theme inline {
-  --color-theme-brand-primary-lighter: #f3faf9;
-  --color-theme-brand-primary-light: #b0dfdc;
-  --color-theme-brand-primary-normal: #3d8e8f;
-  --color-theme-brand-primary-dark: #24494b;
-  --color-theme-brand-primary-darker: #0f2124;
+  --color-theme-brand-primary-lighter: #eefcfc;
+  --color-theme-brand-primary-light: #b9f1f3;
+  --color-theme-brand-primary-normal: #22c3c5;
+  --color-theme-brand-primary-dark: #126769;
+  --color-theme-brand-primary-darker: #062223;
   --color-theme-brand-secondary-lighter: #fbecca;
   --color-theme-brand-secondary-light: #f4bf55;
   --color-theme-brand-secondary-normal: #ea8516;

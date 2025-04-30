@@ -50,7 +50,7 @@ export default function DashboardRootLayout({
             <Header menu={menu} />
 
             {/* Children (main content) */}
-            <div className="flex-1 px-3 pb-6 overflow-y-auto">{children}</div>
+            <div className="flex-1 px-3 lg:pr-3 lg:pl-0 pb-6 overflow-y-auto">{children}</div>
           </div>
         </section>
       </PrivateLayout>

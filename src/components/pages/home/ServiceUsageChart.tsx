@@ -16,20 +16,54 @@ const data = [
 
 export function ServiceUsageChart() {
   const isDark = useSelector((state: RootState) => state.theme.theme === 'dark')
-  const strokeColor = isDark ? '#aaa' : '#333'
-  const gridStroke = isDark ? '#3f3f3f' : '#e0e0e0'
+  const strokeColor = isDark ? '#333' : '#fff'
 
   return (
-    <div className="bg-box-light rounded-2xl p-6 shadow-md">
-      <h2 className="text-lg font-semibold text-box-light-text mb-4">Services weakly usage</h2>
+    <div className="bg-theme-brand-primary-normal rounded-2xl p-6 shadow-md">
+      <h2 className="text-lg font-semibold text-white mb-4">Services weakly usage</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
-          <XAxis dataKey="name" stroke={strokeColor} /> <YAxis stroke={strokeColor} /> <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="SMS" stroke="var(--color-theme-brand-primary-normal)" />
-          <Line type="monotone" dataKey="Email" stroke="var(--color-theme-success-normal)" />
-          <Line type="monotone" dataKey="KYC" stroke="var(--color-theme-error-normal)" />
-          <Line type="monotone" dataKey="CRM" stroke="var(--color-theme-warning-normal)" />
+          <XAxis dataKey="name" stroke={strokeColor} /> <YAxis stroke={strokeColor} />{' '}
+          <Tooltip
+            contentStyle={{
+              backgroundColor: '#003f5c',
+              borderRadius: 8,
+              color: '#fff',
+              border: 'none',
+            }}
+            labelStyle={{ color: '#fff' }}
+          />
+          <Legend
+            wrapperStyle={{
+              color: '#fff',
+              fontWeight: 600,
+              fontSize: '14px',
+            }}
+          />
+          <Line
+            dataKey="SMS"
+            stroke="#0a0a23"
+            strokeWidth={2.5}
+            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+          />
+          <Line
+            dataKey="Email"
+            stroke="#facc15"
+            strokeWidth={2.5}
+            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+          />
+          <Line
+            dataKey="KYC"
+            stroke="#f87171"
+            strokeWidth={2.5}
+            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+          />
+          <Line
+            dataKey="CRM"
+            stroke="#6b21a8"
+            strokeWidth={2.5}
+            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

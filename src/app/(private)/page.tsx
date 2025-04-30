@@ -9,7 +9,7 @@ import { WalletCard } from '@/components/pages/home/WalletCard'
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-6 w-full h-full px-4 py-6 text-box-light-text">
+    <div className="flex flex-col gap-6 w-full h-full px-4 lg:pl-2 lg:px-4 py-6 text-box-light-text">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="col-span-1 lg:col-span-2 space-y-6">
           <WalletCard />
@@ -17,7 +17,7 @@ export default function Home() {
           <BalanceHistoryChart />
         </div>
 
-        <div className="col-span-1 space-y-6">
+        <div className="col-span-1 space-y-6 pb-6">
           <QuickAccess />
           <RecentTransactions />
           <ExpenseStatsChart />

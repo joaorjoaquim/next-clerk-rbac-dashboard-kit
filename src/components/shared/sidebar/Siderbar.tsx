@@ -30,7 +30,7 @@ export function Sidebar({ menu }: SidebarProps) {
   return (
     <div className="hidden lg:flex min-h-[100dvh] z-40 p-5">
       <div
-        className={`hidden lg:flex flex-col bg-box-light h-full font-poppins ${isOpen ? 'min-w-48' : 'min-w-16'} rounded-xl duration-500 text-box-light-text shadow-lg shadow-box-normal`}
+        className={`hidden lg:flex flex-col bg-box-light h-full font-poppins ${isOpen ? 'min-w-54' : 'min-w-16'} rounded-xl duration-500 text-box-light-text shadow-lg shadow-box-normal`}
       >
         <div className="pt-5 pb-3 flex items-center justify-center transition-all border-b border-input-background">
           {isOpen ? (
@@ -44,8 +44,8 @@ export function Sidebar({ menu }: SidebarProps) {
                 onClick={handleToggleSidebar}
               >
                 <svg
-                  width="27"
-                  height="26"
+                  width="19"
+                  height="18"
                   viewBox="0 0 17 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +68,8 @@ export function Sidebar({ menu }: SidebarProps) {
               onClick={handleToggleSidebar}
             >
               <svg
-                width="27"
-                height="26"
+                width="20"
+                height="19"
                 viewBox="0 0 17 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
