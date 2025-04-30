@@ -13,9 +13,9 @@ export function RecentTransactions() {
     <div className="bg-box-light rounded-2xl p-4 shadow-md">
       <h2 className="text-lg font-semibold mb-4 text-box-light-text">Last Transactions</h2>
 
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-2">
         {transactions.map((tx, i) => (
-          <li key={i} className="flex justify-between items-center bg-box-normal p-3 rounded-lg">
+          <li key={i} className="flex justify-between items-center bg-box-medium p-3 rounded-lg">
             <div className="flex items-center gap-3">
               <span
                 className={`p-2 rounded-full text-white ${

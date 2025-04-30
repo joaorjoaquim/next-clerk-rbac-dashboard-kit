@@ -11,6 +11,7 @@
   --background: #edeef1;
   --foreground: #25262c;
   --box-light: #ffffff;
+  --box-medium: #f7f8f8;
   --box-light-text: #1a1a1a;
   --box-normal: #d8dadf;
   --box-dark: #525866;
@@ -24,6 +25,7 @@
   --background: #020202;
   --foreground: #edeef1;
   --box-light: #25262c;
+  --box-medium: #2e3038;
   --box-light-text: #f4f4f4;
   --box-normal: #383a42;
   --box-dark: #1e1e1e;
@@ -44,6 +46,7 @@
   --color-theme-brand-secondary-dark: #8c3614;
   --color-theme-brand-secondary-darker: #421506;
   --color-box-light: var(--box-light);
+  --color-box-medium: var(--box-medium);
   --color-box-light-text: var(--box-light-text);
   --color-box-normal: var(--box-normal);
   --color-box-dark: var(--box-dark);
