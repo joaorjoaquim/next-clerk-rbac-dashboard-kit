@@ -18,6 +18,7 @@
   --box-dark-text: #ffffff;
   --input-background: #f7f8f8;
   --input-border: #d8dadf;
+  --input-icon: #b5bac4;
 }
 
 /* Dark theme */
@@ -32,6 +33,7 @@
   --box-dark-text: #ffffff;
   --input-background: #383a42;
   --input-border: #3f434d;
+  --input-icon: #8d94a3;
 }
 
 @theme inline {
@@ -53,6 +55,7 @@
   --color-box-dark-text: var(--box-dark-text);
   --color-input-background: var(--input-background);
   --color-input-border: var(--input-border);
+  --color-input-icon: var(--input-icon);
   --color-theme-gray-0: #ffffff;
   --color-theme-gray-25: #f7f8f8;
   --color-theme-gray-50: #edeef1;
@@ -81,8 +84,11 @@
   --color-theme-success-normal: #38c793;
   --color-theme-success-dark: #2d9f75;
   --color-theme-success-darker: #176448;
+  --shadow-smoth: 0px 2px 95.1px 0px #1b1c1d33;
 
   --animate-theme-icon: fade-rotate 0.5s ease-in-out;
+  --animate-auth: slide-bounce-in 1.6s cubic-bezier(0.45, 0, 0.2, 1) both;
+  --animate-auth-mobile: drop-bounce-in 1.6s cubic-bezier(0.45, 0, 0.2, 1) both;
 
   @keyframes fade-rotate {
     0% {
@@ -92,6 +98,43 @@
     100% {
       opacity: 1;
       transform: rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes fade-in-slide {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slide-bounce-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-160%) scale(0.95);
+    }
+    80% {
+      transform: translateX(15%) scale(0.998);
+    }
+    100% {
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes drop-bounce-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-160%) scale(0.95);
+    }
+    80% {
+      transform: translateY(40%) scale(0.998);
+    }
+    100% {
+      transform: translateY(0) scale(1);
     }
   }
 }

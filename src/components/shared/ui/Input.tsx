@@ -58,7 +58,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             error ? 'border-theme-error-normal' : 'border-input-border'
           )}
         >
-          {IconLeft && <IconLeft className="w-5 h-5 text-box-light-text" />}
+          {IconLeft && <IconLeft className="w-5 h-5 text-input-icon" />}
           <input
             {...props}
             ref={(el) => {
@@ -78,7 +78,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               onClick={handleTogglePassword}
               className="focus:outline-none text-theme-gray-400 hover:text-theme-brand-primary-light transition"
             >
-              <IconRight className="w-5 h-5" />
+              <IconRight className="w-5 h-5 text-input-icon" />
             </button>
           )}
         </div>

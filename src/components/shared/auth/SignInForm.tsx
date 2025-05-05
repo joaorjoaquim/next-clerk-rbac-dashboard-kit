@@ -47,8 +47,8 @@ export function SignInForm() {
         Continuar
       </Button>
 
-      <div className="my-4 py-3 border-t border-theme-gray-300 dark:border-theme-gray-600 text-center text-xs uppercase text-box-light-text">
-        <span className="bg-box-normal px-2 -mt-3 inline-block">ou</span>
+      <div className="my-4 py-3 border-t border-theme-gray-300 text-center text-xs uppercase text-box-light-text">
+        <span className="px-2 -mt-3 inline-block">ou</span>
       </div>
 
       <GoogleSignInButton />

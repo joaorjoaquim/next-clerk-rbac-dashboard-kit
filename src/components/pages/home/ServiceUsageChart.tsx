@@ -16,22 +16,33 @@ const data = [
 
 export function ServiceUsageChart() {
   const isDark = useSelector((state: RootState) => state.theme.theme === 'dark')
-  const strokeColor = isDark ? '#333' : '#fff'
+  const strokeColor = isDark ? '#fff' : '#333'
 
   return (
-    <div className="bg-theme-brand-primary-normal rounded-2xl p-6 shadow-md">
-      <h2 className="text-lg font-semibold text-white mb-4">Services weakly usage</h2>
+    <div className="bg-box-light rounded-2xl p-6 shadow-md">
+      <h2 className="text-lg font-semibold text-box-light-text mb-4">Services weakly usage</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
-          <XAxis dataKey="name" stroke={strokeColor} /> <YAxis stroke={strokeColor} />{' '}
+          <XAxis dataKey="name" stroke={strokeColor} tickMargin={12} />{' '}
+          <YAxis stroke={strokeColor} tickMargin={12} domain={['auto', 'auto']} />{' '}
           <Tooltip
             contentStyle={{
-              backgroundColor: '#003f5c',
+              backgroundColor: isDark ? '#1f2937' : '#f9fafb',
               borderRadius: 8,
-              color: '#fff',
               border: 'none',
+              boxShadow: '0 0 8px rgba(0,0,0,0.15)',
+              color: isDark ? '#f3f4f6' : '#1f2937',
             }}
-            labelStyle={{ color: '#fff' }}
+            labelStyle={{
+              color: isDark ? '#f3f4f6' : '#1f2937',
+              fontWeight: 'bold',
+            }}
+            formatter={(value: number) =>
+              new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(value)
+            }
           />
           <Legend
             wrapperStyle={{
@@ -42,27 +53,27 @@ export function ServiceUsageChart() {
           />
           <Line
             dataKey="SMS"
-            stroke="#0a0a23"
+            stroke="#aa0a23"
             strokeWidth={2.5}
-            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+            dot={{ r: 5, stroke: strokeColor, strokeWidth: 1.5 }}
           />
           <Line
             dataKey="Email"
             stroke="#facc15"
             strokeWidth={2.5}
-            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+            dot={{ r: 5, stroke: strokeColor, strokeWidth: 1.5 }}
           />
           <Line
             dataKey="KYC"
             stroke="#f87171"
             strokeWidth={2.5}
-            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+            dot={{ r: 5, stroke: strokeColor, strokeWidth: 1.5 }}
           />
           <Line
             dataKey="CRM"
             stroke="#6b21a8"
             strokeWidth={2.5}
-            dot={{ r: 5, stroke: '#fff', strokeWidth: 1.5 }}
+            dot={{ r: 5, stroke: strokeColor, strokeWidth: 1.5 }}
           />
         </LineChart>
       </ResponsiveContainer>

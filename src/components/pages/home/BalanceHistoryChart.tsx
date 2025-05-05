@@ -17,31 +17,45 @@ const data = [
 export function BalanceHistoryChart() {
   const theme = useSelector((state: RootState) => state.theme.theme)
   const isDark = theme === 'dark'
-  const gridStroke = isDark ? '#3f3f3f' : '#e0e0e0'
-  const textColor = isDark ? '#e1e4e8' : '#1d1f23'
-  const primaryColor = 'var(--color-theme-brand-primary-normal)'
+  const textColor = '#1d1f23'
+  const primaryColor = '#e1e4e8'
 
   return (
-    <div className="bg-box-light p-4 rounded-xl shadow-md">
-      <h2 className="text-lg font-medium text-box-light-text mb-4">Balance History</h2>
+    <div className="bg-theme-brand-primary-normal p-6 rounded-xl shadow-md">
+      <h2 className="text-lg font-medium text-white mb-4">Balance History</h2>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           {/* Gradient */}
           <defs>
             <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={primaryColor} stopOpacity={0.4} />
-              <stop offset="95%" stopColor={primaryColor} stopOpacity={0.05} />
+              <stop offset="5%" stopColor={primaryColor} stopOpacity={0.8} />
+              <stop offset="95%" stopColor={primaryColor} stopOpacity={0.09} />
             </linearGradient>
           </defs>
 
-          <XAxis dataKey="name" stroke={textColor} />
-          <YAxis stroke={textColor} />
-          <Tooltip />
+          <XAxis dataKey="name" stroke="#fff" tickMargin={12} />
+          <YAxis stroke="#fff" tickMargin={12} />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: primaryColor,
+              borderRadius: 8,
+              border: 'none',
+              boxShadow: '0 0 8px rgba(0,0,0,0.15)',
+            }}
+            labelStyle={{ color: textColor, fontWeight: 'bold' }}
+            itemStyle={{ color: textColor }}
+            formatter={(value: number) =>
+              new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(value)
+            }
+          />
           <Area
             type="monotone"
             dataKey="balance"
             stroke={primaryColor}
-            fill="url(#balanceGradient)"
+            fill={'url(#balanceGradient)'}
             strokeWidth={3}
           />
         </AreaChart>

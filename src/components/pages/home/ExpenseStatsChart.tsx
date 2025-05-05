@@ -23,7 +23,7 @@ export function ExpenseStatsChart() {
   const textColor = theme === 'dark' ? '#f5f5f5' : '#1f2937'
 
   return (
-    <div className="bg-box-light p-4 rounded-xl shadow-md min-w-[280px]">
+    <div className="bg-box-light p-6 rounded-xl shadow-md min-w-[280px]">
       <h2 className="text-lg font-medium text-box-light-text mb-4">Expenses per Service</h2>
       <ResponsiveContainer width="100%" height={280}>
         <PieChart>

@@ -31,7 +31,7 @@ export function SiderbarMobile({ menu }: SiderbarMobileProps) {
     <Dialog.Root open={isOpen} onOpenChange={(state) => dispatch(setMobileSidebar(state))}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/80 z-40" />
-        <Dialog.Content className="fixed top-0 left-0 h-screen w-[235px] z-50 bg-box-light shadow-xl p-4 flex flex-col font-poppins text-theme-gray-25">
+        <Dialog.Content className="fixed top-0 left-0 h-screen w-[235px] z-50 bg-box-light shadow-smoth p-4 flex flex-col font-poppins text-theme-gray-25">
           <Dialog.Title className="flex justify-between items-center mb-6">
             <img src={logoSrc} alt="Logo" className="w-[110px] aspect-[3/1] object-contain" />
             <Dialog.Close asChild>

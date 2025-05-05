@@ -31,19 +31,19 @@ export function Button({
   const isDisabled = disabled || loading
 
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none'
+    'inline-flex items-center justify-center gap-2 p-[10px] rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none'
 
   const variantStyles = {
     primary:
-      'bg-theme-brand-primary-normal text-white hover:bg-theme-brand-primary-dark focus:ring-theme-brand-primary-light',
+      'border-2 border-theme-brand-primary-normal bg-theme-brand-primary-normal text-white hover:bg-theme-brand-primary-dark hover:border-theme-brand-primary-dark focus:ring-theme-brand-primary-light',
     secondary:
-      'border-2 border-theme-brand-primary-normal text-theme-brand-primary-normal hover:bg-theme-brand-primary-dark hover:text-white focus:ring-theme-brand-primary-light',
+      'border-2 border-theme-brand-primary-normal text-theme-brand-primary-normal hover:border-theme-brand-primary-dark hover:text-theme-brand-primary-dark focus:ring-theme-brand-primary-light',
     tertiary:
       'text-theme-brand-primary-normal hover:text-theme-brand-primary-light focus:ring-theme-brand-primary-light',
     success:
-      'bg-theme-success-normal text-white hover:bg-theme-success-dark focus:ring-theme-success-light',
+      'border-2 border-theme-success-normal bg-theme-success-normal text-white hover:bg-theme-success-dark focus:ring-theme-success-light',
     error:
-      'bg-theme-error-normal text-white hover:bg-theme-error-dark focus:ring-theme-error-light',
+      'border-2 border-theme-error-normal bg-theme-error-normal text-white hover:bg-theme-error-dark focus:ring-theme-error-light',
   }
 
   return (
@@ -53,17 +53,17 @@ export function Button({
       {...props}
     >
       {loading ? (
-        <RiLoader4Line className="w-4 h-4 animate-spin" />
+        <RiLoader4Line className="w-5 h-5 animate-spin" />
       ) : (
         <>
           {icon && iconPosition === 'start' && IconComponent && (
-            <IconComponent className="w-4 h-4" />
+            <IconComponent className="w-5 h-5" />
           )}
         </>
       )}
       {children}
       {!loading && icon && iconPosition === 'end' && IconComponent && (
-        <IconComponent className="w-4 h-4" />
+        <IconComponent className="w-5 h-5" />
       )}
     </button>
   )

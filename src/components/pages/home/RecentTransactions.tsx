@@ -10,7 +10,7 @@ const transactions = [
 
 export function RecentTransactions() {
   return (
-    <div className="bg-box-light rounded-2xl p-4 shadow-md">
+    <div className="bg-box-light rounded-2xl p-6 shadow-md">
       <h2 className="text-lg font-semibold mb-4 text-box-light-text">Last Transactions</h2>
 
       <ul className="flex flex-col gap-2">

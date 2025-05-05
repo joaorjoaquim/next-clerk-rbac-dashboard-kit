@@ -29,29 +29,39 @@ export function SignUpForm() {
     <>
       <h2 className="text-2xl font-semibold text-box-light-text mb-6">Criar sua conta</h2>
 
-      <Input
-        label="Seu e-mail"
-        type="email"
-        placeholder="Digite o endereço de e-mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        iconLeft="RiMailLine"
-      />
+      <div className="flex flex-col gap-3">
+        <Input
+          label="Seu e-mail"
+          type="email"
+          placeholder="Digite o endereço de e-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          iconLeft="RiMailLine"
+        />
 
-      <Input
-        label="Senha"
-        type="password"
-        placeholder="Digite sua senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        iconLeft="RiLockLine"
-      />
+        <Input
+          label="Senha"
+          type="password"
+          placeholder="Digite sua senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          iconLeft="RiLockLine"
+        />
 
-      {error && <p className="text-sm text-theme-error-normal mt-2">{error}</p>}
-
-      <Button className="w-full mt-6" onClick={handleSignUp}>
-        Criar conta →
+        {error && <p className="text-sm text-theme-error-normal mt-2">{error}</p>}
+      </div>
+      <Button
+        className="w-full mt-6"
+        icon="RiArrowRightLine"
+        iconPosition="end"
+        onClick={handleSignUp}
+      >
+        Criar conta
       </Button>
+
+      <div className="my-4 py-3 border-t border-theme-gray-300 text-center text-xs uppercase text-box-light-text">
+        <span className="px-2 -mt-3 inline-block">ou</span>
+      </div>
 
       <GoogleSignUpButton />
 
