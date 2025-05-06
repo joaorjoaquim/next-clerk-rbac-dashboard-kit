@@ -1,3 +1,5 @@
+"use client";
+
 import { StaticCard } from "@/components/shared/StaticCard";
 import { Button } from "@/components/shared/ui/Button";
 import { Input } from "@/components/shared/ui/Input";

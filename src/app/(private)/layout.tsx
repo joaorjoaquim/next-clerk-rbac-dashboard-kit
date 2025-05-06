@@ -43,7 +43,7 @@ export default function DashboardRootLayout({
     },
     {
       name: "Use Cases",
-      icon: "RiLayoutGridLine",
+      icon: "RiLayout2Line",
       submenu: [
         {
           name: "Analytics Dashboard",
