@@ -17,7 +17,11 @@ import {
   RiMoonLine,
   RiSunLine,
   RiRestartLine,
-} from '@remixicon/react'
+  RiUserLine,
+  RiLineChartLine,
+  RiMoneyDollarCircleLine,
+  RiRidingLine,
+} from "@remixicon/react";
 
 export const iconMap = {
   RiHomeLine,
@@ -38,6 +42,10 @@ export const iconMap = {
   RiMoonLine,
   RiSunLine,
   RiRestartLine,
-} as const
+  RiUserLine,
+  RiLineChartLine,
+  RiMoneyDollarCircleLine,
+  RiRidingLine,
+} as const;
 
-export type IconName = keyof typeof iconMap
+export type IconName = keyof typeof iconMap;
