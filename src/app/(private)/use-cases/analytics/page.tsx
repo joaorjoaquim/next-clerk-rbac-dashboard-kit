@@ -1,117 +1,142 @@
 "use client";
 
-import { StaticCard } from "@/components/shared/StaticCard";
+import { AreaChart } from "@/components/shared/ui/AreaChart";
+import { LineChart } from "@/components/shared/ui/LineChart";
+import { PieChart } from "@/components/shared/ui/PieChart";
+import { Card } from "@/components/shared/ui/Card";
 import { Button } from "@/components/shared/ui/Button";
 import { Input } from "@/components/shared/ui/Input";
-import { LineChart, BarChart } from "@/components/charts";
 import {
-  RiUserLine,
   RiLineChartLine,
+  RiUserLine,
   RiMoneyDollarCircleLine,
   RiRidingLine,
 } from "@remixicon/react";
+import { ChartData } from "@/components/shared/ui/types";
+
+const revenueData: ChartData = [
+  { name: "Jan", revenue: 4000 },
+  { name: "Feb", revenue: 3000 },
+  { name: "Mar", revenue: 5000 },
+  { name: "Apr", revenue: 4500 },
+  { name: "May", revenue: 6000 },
+  { name: "Jun", revenue: 5500 },
+];
+
+const userData: ChartData = [
+  { name: "Jan", users: 2400, newUsers: 400 },
+  { name: "Feb", users: 1398, newUsers: 300 },
+  { name: "Mar", users: 9800, newUsers: 200 },
+  { name: "Apr", users: 3908, newUsers: 278 },
+  { name: "May", users: 4800, newUsers: 189 },
+  { name: "Jun", users: 3800, newUsers: 239 },
+];
+
+const trafficData = [
+  { name: "Direct", value: 400 },
+  { name: "Social", value: 300 },
+  { name: "Referral", value: 300 },
+  { name: "Organic", value: 200 },
+];
 
 export default function AnalyticsDashboard() {
-  // Mock data for demonstration
-  const lineChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        label: "Revenue",
-        data: [65, 59, 80, 81, 56, 55],
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-      },
-    ],
-  };
-
-  const barChartData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-      {
-        label: "Users",
-        data: [12, 19, 3, 5, 2, 3, 7],
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
-
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Analytics Dashboard</h1>
+        <h1 className="text-2xl font-bold text-box-light-text">
+          Analytics Dashboard
+        </h1>
         <div className="flex gap-4">
-          <Input type="date" className="w-48" placeholder="Select date range" />
-          <Button>Filter</Button>
+          <Input type="date" className="w-40" />
+          <Button variant="primary">Apply Filter</Button>
         </div>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StaticCard className="p-6">
+        <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <RiUserLine className="w-6 h-6 text-blue-600" />
+            <div className="p-3 rounded-full bg-theme-brand-primary-normal/10">
+              <RiLineChartLine className="w-6 h-6 text-theme-brand-primary-normal" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Total Users</p>
-              <p className="text-2xl font-bold">1,234</p>
+              <p className="text-sm text-box-light-text/60">Total Revenue</p>
+              <p className="text-2xl font-semibold text-box-light-text">
+                $24,500
+              </p>
             </div>
           </div>
-        </StaticCard>
+        </Card>
 
-        <StaticCard className="p-6">
+        <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-100 rounded-lg">
-              <RiLineChartLine className="w-6 h-6 text-green-600" />
+            <div className="p-3 rounded-full bg-theme-success-normal/10">
+              <RiUserLine className="w-6 h-6 text-theme-success-normal" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Active Users</p>
-              <p className="text-2xl font-bold">789</p>
+              <p className="text-sm text-box-light-text/60">Total Users</p>
+              <p className="text-2xl font-semibold text-box-light-text">
+                12,345
+              </p>
             </div>
           </div>
-        </StaticCard>
+        </Card>
 
-        <StaticCard className="p-6">
+        <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-purple-100 rounded-lg">
-              <RiMoneyDollarCircleLine className="w-6 h-6 text-purple-600" />
+            <div className="p-3 rounded-full bg-theme-warning-normal/10">
+              <RiMoneyDollarCircleLine className="w-6 h-6 text-theme-warning-normal" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Revenue</p>
-              <p className="text-2xl font-bold">$12,345</p>
+              <p className="text-sm text-box-light-text/60">Average Order</p>
+              <p className="text-2xl font-semibold text-box-light-text">$245</p>
             </div>
           </div>
-        </StaticCard>
+        </Card>
 
-        <StaticCard className="p-6">
+        <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-orange-100 rounded-lg">
-              <RiRidingLine className="w-6 h-6 text-orange-600" />
+            <div className="p-3 rounded-full bg-theme-error-normal/10">
+              <RiRidingLine className="w-6 h-6 text-theme-error-normal" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">Growth</p>
-              <p className="text-2xl font-bold">+12.5%</p>
+              <p className="text-sm text-box-light-text/60">Growth Rate</p>
+              <p className="text-2xl font-semibold text-box-light-text">
+                +12.5%
+              </p>
             </div>
           </div>
-        </StaticCard>
+        </Card>
       </div>
 
-      {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <StaticCard className="p-6">
-          <h2 className="text-lg font-semibold mb-4">Revenue Trend</h2>
-          <div className="h-80">
-            <LineChart data={lineChartData} />
-          </div>
-        </StaticCard>
+        <AreaChart
+          data={revenueData}
+          dataKey="revenue"
+          title="Revenue Overview"
+          primaryColor="var(--color-theme-brand-primary-normal)"
+          formatter={(value) => `$${value.toLocaleString()}`}
+        />
 
-        <StaticCard className="p-6">
-          <h2 className="text-lg font-semibold mb-4">User Activity</h2>
-          <div className="h-80">
-            <BarChart data={barChartData} />
-          </div>
-        </StaticCard>
+        <LineChart
+          data={userData}
+          dataKeys={[
+            { key: "users", color: "var(--color-theme-success-normal)" },
+            { key: "newUsers", color: "var(--color-theme-warning-normal)" },
+          ]}
+          title="User Growth"
+          formatter={(value) => value.toLocaleString()}
+        />
+
+        <PieChart
+          data={trafficData}
+          title="Traffic Sources"
+          colors={[
+            "var(--color-theme-brand-primary-normal)",
+            "var(--color-theme-success-normal)",
+            "var(--color-theme-warning-normal)",
+            "var(--color-theme-error-normal)",
+          ]}
+        />
       </div>
     </div>
   );

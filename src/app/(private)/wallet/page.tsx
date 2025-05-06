@@ -2,13 +2,7 @@
 
 import { AddFundsDrawer } from '@/components/shared/AddFundsDrawer'
 import { Button } from '@/components/shared/ui/Button'
-import {
-  RiArrowDownLine,
-  RiArrowUpLine,
-  RiDownloadLine,
-  RiPixLine,
-  RiUploadLine,
-} from '@remixicon/react'
+import { RiArrowDownLine, RiArrowUpLine, RiPixLine } from '@remixicon/react'
 import { useState } from 'react'
 
 const transactions = [
@@ -39,7 +33,7 @@ export default function WalletPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8 w-full h-full px-4 py-6 text-box-light-text">
+    <div className="flex flex-col gap-8 w-full h-fit px-4 py-6 text-box-light-text">
       <section className="bg-box-light rounded-2xl p-6 shadow-lg">
         <h1 className="text-2xl font-bold mb-4">My Wallet</h1>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -81,14 +75,14 @@ export default function WalletPage() {
         </div>
       </section>
 
-      <section className="bg-box-light rounded-2xl p-6 shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Last Transactions</h2>
+      <section className="flex flex-col bg-box-light rounded-2xl p-6 gap-4 shadow-lg">
+        <h2 className="text-xl font-semibold">Last Transactions</h2>
 
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-2">
           {transactions.map((tx, index) => (
             <li
               key={index}
-              className="flex justify-between items-center px-4 py-3 rounded-lg bg-box-normal"
+              className="flex justify-between items-center px-4 py-3 rounded-lg bg-box-medium"
             >
               <div className="flex items-center gap-3">
                 <span
